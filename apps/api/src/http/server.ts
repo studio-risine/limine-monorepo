@@ -29,11 +29,11 @@ app.register(fastifySwagger, {
 		servers: [],
 	},
 	transform: jsonSchemaTransform,
-});
+})
 
 app.register(fastifySwaggerUi, {
 	routePrefix: '/docs',
-});
+})
 
 app.register(cors)
 app.register(createAccount)
