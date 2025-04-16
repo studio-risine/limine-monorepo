@@ -1,4 +1,5 @@
 {
+	"extends": "@limine/typescript-config/node.json",
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
