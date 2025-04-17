@@ -3,6 +3,7 @@ import { z } from 'zod'
 const envSchema = z.object({
 	HOST: z.string().default('0.0.0.0'),
 	PORT: z.coerce.number().default(3333),
+	POSTGRES_DB: z.string().default('limine'),
 })
 
 const { data, success, error } = envSchema.safeParse(process.env)

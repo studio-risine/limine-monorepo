@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: 'bitnami/postgresql:latest'
+    container_name: limine-pg
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: limine
+    ports:
+      - 5432:5432
