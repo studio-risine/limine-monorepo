@@ -14,5 +14,31 @@ model User {
   email    String @unique
   password String
 
+  createdAt DateTime  @default(now())
+  Process   Process[]
+
   @@map("users")
+}
+
+model Process {
+  id   String @id @default(uuid())
+  name String
+
+  createdAt DateTime   @default(now())
+  startedOn DateTime?
+  user      User       @relation(fields: [userId], references: [id])
+  userId    String
+  deadlines Deadline[]
+
+  @@map("processes")
+}
+
+model Deadline {
+  id   String @id @default(uuid())
+  name String
+
+  process   Process @relation(fields: [processId], references: [id])
+  processId String
+
+  @@map("deadlines")
 }

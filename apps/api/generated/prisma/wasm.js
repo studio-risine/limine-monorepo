@@ -121,7 +121,22 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  password: 'password'
+  password: 'password',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ProcessScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  startedOn: 'startedOn',
+  userId: 'userId'
+};
+
+exports.Prisma.DeadlineScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  processId: 'processId'
 };
 
 exports.Prisma.SortOrder = {
@@ -134,9 +149,16 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Process: 'Process',
+  Deadline: 'Deadline'
 };
 
 /**

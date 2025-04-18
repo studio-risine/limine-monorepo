@@ -18,6 +18,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Process
+ * 
+ */
+export type Process = $Result.DefaultSelection<Prisma.$ProcessPayload>
+/**
+ * Model Deadline
+ * 
+ */
+export type Deadline = $Result.DefaultSelection<Prisma.$DeadlinePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +163,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.process`: Exposes CRUD operations for the **Process** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Processes
+    * const processes = await prisma.process.findMany()
+    * ```
+    */
+  get process(): Prisma.ProcessDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.deadline`: Exposes CRUD operations for the **Deadline** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Deadlines
+    * const deadlines = await prisma.deadline.findMany()
+    * ```
+    */
+  get deadline(): Prisma.DeadlineDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +623,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    Process: 'Process',
+    Deadline: 'Deadline'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +644,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "process" | "deadline"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +719,154 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Process: {
+        payload: Prisma.$ProcessPayload<ExtArgs>
+        fields: Prisma.ProcessFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProcessFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProcessFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>
+          }
+          findFirst: {
+            args: Prisma.ProcessFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProcessFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>
+          }
+          findMany: {
+            args: Prisma.ProcessFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>[]
+          }
+          create: {
+            args: Prisma.ProcessCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>
+          }
+          createMany: {
+            args: Prisma.ProcessCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ProcessCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>[]
+          }
+          delete: {
+            args: Prisma.ProcessDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>
+          }
+          update: {
+            args: Prisma.ProcessUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProcessDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProcessUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ProcessUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>[]
+          }
+          upsert: {
+            args: Prisma.ProcessUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ProcessPayload>
+          }
+          aggregate: {
+            args: Prisma.ProcessAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProcess>
+          }
+          groupBy: {
+            args: Prisma.ProcessGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProcessGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProcessCountArgs<ExtArgs>
+            result: $Utils.Optional<ProcessCountAggregateOutputType> | number
+          }
+        }
+      }
+      Deadline: {
+        payload: Prisma.$DeadlinePayload<ExtArgs>
+        fields: Prisma.DeadlineFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DeadlineFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DeadlineFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>
+          }
+          findFirst: {
+            args: Prisma.DeadlineFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DeadlineFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>
+          }
+          findMany: {
+            args: Prisma.DeadlineFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>[]
+          }
+          create: {
+            args: Prisma.DeadlineCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>
+          }
+          createMany: {
+            args: Prisma.DeadlineCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DeadlineCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>[]
+          }
+          delete: {
+            args: Prisma.DeadlineDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>
+          }
+          update: {
+            args: Prisma.DeadlineUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>
+          }
+          deleteMany: {
+            args: Prisma.DeadlineDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DeadlineUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DeadlineUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>[]
+          }
+          upsert: {
+            args: Prisma.DeadlineUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeadlinePayload>
+          }
+          aggregate: {
+            args: Prisma.DeadlineAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDeadline>
+          }
+          groupBy: {
+            args: Prisma.DeadlineGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DeadlineGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DeadlineCountArgs<ExtArgs>
+            result: $Utils.Optional<DeadlineCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +955,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    process?: ProcessOmit
+    deadline?: DeadlineOmit
   }
 
   /* Types for Logging */
@@ -864,6 +1046,67 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    Process: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Process?: boolean | UserCountOutputTypeCountProcessArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountProcessArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProcessWhereInput
+  }
+
+
+  /**
+   * Count Type ProcessCountOutputType
+   */
+
+  export type ProcessCountOutputType = {
+    deadlines: number
+  }
+
+  export type ProcessCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    deadlines?: boolean | ProcessCountOutputTypeCountDeadlinesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProcessCountOutputType without action
+   */
+  export type ProcessCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProcessCountOutputType
+     */
+    select?: ProcessCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProcessCountOutputType without action
+   */
+  export type ProcessCountOutputTypeCountDeadlinesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DeadlineWhereInput
+  }
+
 
   /**
    * Models
@@ -884,6 +1127,7 @@ export namespace Prisma {
     name: string | null
     email: string | null
     password: string | null
+    createdAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -891,6 +1135,7 @@ export namespace Prisma {
     name: string | null
     email: string | null
     password: string | null
+    createdAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -898,6 +1143,7 @@ export namespace Prisma {
     name: number
     email: number
     password: number
+    createdAt: number
     _all: number
   }
 
@@ -907,6 +1153,7 @@ export namespace Prisma {
     name?: true
     email?: true
     password?: true
+    createdAt?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -914,6 +1161,7 @@ export namespace Prisma {
     name?: true
     email?: true
     password?: true
+    createdAt?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -921,6 +1169,7 @@ export namespace Prisma {
     name?: true
     email?: true
     password?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -1001,6 +1250,7 @@ export namespace Prisma {
     name: string
     email: string
     password: string
+    createdAt: Date
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1025,6 +1275,9 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     password?: boolean
+    createdAt?: boolean
+    Process?: boolean | User$ProcessArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1032,6 +1285,7 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     password?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1039,6 +1293,7 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     password?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1046,18 +1301,28 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     password?: boolean
+    createdAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Process?: boolean | User$ProcessArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      Process: Prisma.$ProcessPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
       email: string
       password: string
+      createdAt: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1452,6 +1717,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    Process<T extends User$ProcessArgs<ExtArgs> = {}>(args?: Subset<T, User$ProcessArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1485,6 +1751,7 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly createdAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -1501,6 +1768,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1520,6 +1791,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1537,6 +1812,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1586,6 +1865,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1634,6 +1917,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1676,6 +1963,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -1724,6 +2015,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -1791,6 +2086,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -1817,6 +2116,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1837,6 +2140,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.Process
+   */
+  export type User$ProcessArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    where?: ProcessWhereInput
+    orderBy?: ProcessOrderByWithRelationInput | ProcessOrderByWithRelationInput[]
+    cursor?: ProcessWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProcessScalarFieldEnum | ProcessScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1848,6 +2175,2130 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Process
+   */
+
+  export type AggregateProcess = {
+    _count: ProcessCountAggregateOutputType | null
+    _min: ProcessMinAggregateOutputType | null
+    _max: ProcessMaxAggregateOutputType | null
+  }
+
+  export type ProcessMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    startedOn: Date | null
+    userId: string | null
+  }
+
+  export type ProcessMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    createdAt: Date | null
+    startedOn: Date | null
+    userId: string | null
+  }
+
+  export type ProcessCountAggregateOutputType = {
+    id: number
+    name: number
+    createdAt: number
+    startedOn: number
+    userId: number
+    _all: number
+  }
+
+
+  export type ProcessMinAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    startedOn?: true
+    userId?: true
+  }
+
+  export type ProcessMaxAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    startedOn?: true
+    userId?: true
+  }
+
+  export type ProcessCountAggregateInputType = {
+    id?: true
+    name?: true
+    createdAt?: true
+    startedOn?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type ProcessAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Process to aggregate.
+     */
+    where?: ProcessWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Processes to fetch.
+     */
+    orderBy?: ProcessOrderByWithRelationInput | ProcessOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProcessWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Processes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Processes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Processes
+    **/
+    _count?: true | ProcessCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProcessMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProcessMaxAggregateInputType
+  }
+
+  export type GetProcessAggregateType<T extends ProcessAggregateArgs> = {
+        [P in keyof T & keyof AggregateProcess]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProcess[P]>
+      : GetScalarType<T[P], AggregateProcess[P]>
+  }
+
+
+
+
+  export type ProcessGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProcessWhereInput
+    orderBy?: ProcessOrderByWithAggregationInput | ProcessOrderByWithAggregationInput[]
+    by: ProcessScalarFieldEnum[] | ProcessScalarFieldEnum
+    having?: ProcessScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProcessCountAggregateInputType | true
+    _min?: ProcessMinAggregateInputType
+    _max?: ProcessMaxAggregateInputType
+  }
+
+  export type ProcessGroupByOutputType = {
+    id: string
+    name: string
+    createdAt: Date
+    startedOn: Date | null
+    userId: string
+    _count: ProcessCountAggregateOutputType | null
+    _min: ProcessMinAggregateOutputType | null
+    _max: ProcessMaxAggregateOutputType | null
+  }
+
+  type GetProcessGroupByPayload<T extends ProcessGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProcessGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProcessGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProcessGroupByOutputType[P]>
+            : GetScalarType<T[P], ProcessGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProcessSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    startedOn?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    deadlines?: boolean | Process$deadlinesArgs<ExtArgs>
+    _count?: boolean | ProcessCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["process"]>
+
+  export type ProcessSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    startedOn?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["process"]>
+
+  export type ProcessSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    startedOn?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["process"]>
+
+  export type ProcessSelectScalar = {
+    id?: boolean
+    name?: boolean
+    createdAt?: boolean
+    startedOn?: boolean
+    userId?: boolean
+  }
+
+  export type ProcessOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "startedOn" | "userId", ExtArgs["result"]["process"]>
+  export type ProcessInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    deadlines?: boolean | Process$deadlinesArgs<ExtArgs>
+    _count?: boolean | ProcessCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ProcessIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProcessIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ProcessPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Process"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      deadlines: Prisma.$DeadlinePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      createdAt: Date
+      startedOn: Date | null
+      userId: string
+    }, ExtArgs["result"]["process"]>
+    composites: {}
+  }
+
+  type ProcessGetPayload<S extends boolean | null | undefined | ProcessDefaultArgs> = $Result.GetResult<Prisma.$ProcessPayload, S>
+
+  type ProcessCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ProcessFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProcessCountAggregateInputType | true
+    }
+
+  export interface ProcessDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Process'], meta: { name: 'Process' } }
+    /**
+     * Find zero or one Process that matches the filter.
+     * @param {ProcessFindUniqueArgs} args - Arguments to find a Process
+     * @example
+     * // Get one Process
+     * const process = await prisma.process.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ProcessFindUniqueArgs>(args: SelectSubset<T, ProcessFindUniqueArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Process that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ProcessFindUniqueOrThrowArgs} args - Arguments to find a Process
+     * @example
+     * // Get one Process
+     * const process = await prisma.process.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ProcessFindUniqueOrThrowArgs>(args: SelectSubset<T, ProcessFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Process that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProcessFindFirstArgs} args - Arguments to find a Process
+     * @example
+     * // Get one Process
+     * const process = await prisma.process.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ProcessFindFirstArgs>(args?: SelectSubset<T, ProcessFindFirstArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Process that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProcessFindFirstOrThrowArgs} args - Arguments to find a Process
+     * @example
+     * // Get one Process
+     * const process = await prisma.process.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ProcessFindFirstOrThrowArgs>(args?: SelectSubset<T, ProcessFindFirstOrThrowArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Processes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProcessFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Processes
+     * const processes = await prisma.process.findMany()
+     * 
+     * // Get first 10 Processes
+     * const processes = await prisma.process.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const processWithIdOnly = await prisma.process.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ProcessFindManyArgs>(args?: SelectSubset<T, ProcessFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Process.
+     * @param {ProcessCreateArgs} args - Arguments to create a Process.
+     * @example
+     * // Create one Process
+     * const Process = await prisma.process.create({
+     *   data: {
+     *     // ... data to create a Process
+     *   }
+     * })
+     * 
+     */
+    create<T extends ProcessCreateArgs>(args: SelectSubset<T, ProcessCreateArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Processes.
+     * @param {ProcessCreateManyArgs} args - Arguments to create many Processes.
+     * @example
+     * // Create many Processes
+     * const process = await prisma.process.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ProcessCreateManyArgs>(args?: SelectSubset<T, ProcessCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Processes and returns the data saved in the database.
+     * @param {ProcessCreateManyAndReturnArgs} args - Arguments to create many Processes.
+     * @example
+     * // Create many Processes
+     * const process = await prisma.process.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Processes and only return the `id`
+     * const processWithIdOnly = await prisma.process.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ProcessCreateManyAndReturnArgs>(args?: SelectSubset<T, ProcessCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Process.
+     * @param {ProcessDeleteArgs} args - Arguments to delete one Process.
+     * @example
+     * // Delete one Process
+     * const Process = await prisma.process.delete({
+     *   where: {
+     *     // ... filter to delete one Process
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ProcessDeleteArgs>(args: SelectSubset<T, ProcessDeleteArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Process.
+     * @param {ProcessUpdateArgs} args - Arguments to update one Process.
+     * @example
+     * // Update one Process
+     * const process = await prisma.process.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ProcessUpdateArgs>(args: SelectSubset<T, ProcessUpdateArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Processes.
+     * @param {ProcessDeleteManyArgs} args - Arguments to filter Processes to delete.
+     * @example
+     * // Delete a few Processes
+     * const { count } = await prisma.process.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ProcessDeleteManyArgs>(args?: SelectSubset<T, ProcessDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Processes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProcessUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Processes
+     * const process = await prisma.process.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ProcessUpdateManyArgs>(args: SelectSubset<T, ProcessUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Processes and returns the data updated in the database.
+     * @param {ProcessUpdateManyAndReturnArgs} args - Arguments to update many Processes.
+     * @example
+     * // Update many Processes
+     * const process = await prisma.process.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Processes and only return the `id`
+     * const processWithIdOnly = await prisma.process.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ProcessUpdateManyAndReturnArgs>(args: SelectSubset<T, ProcessUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Process.
+     * @param {ProcessUpsertArgs} args - Arguments to update or create a Process.
+     * @example
+     * // Update or create a Process
+     * const process = await prisma.process.upsert({
+     *   create: {
+     *     // ... data to create a Process
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Process we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ProcessUpsertArgs>(args: SelectSubset<T, ProcessUpsertArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Processes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProcessCountArgs} args - Arguments to filter Processes to count.
+     * @example
+     * // Count the number of Processes
+     * const count = await prisma.process.count({
+     *   where: {
+     *     // ... the filter for the Processes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProcessCountArgs>(
+      args?: Subset<T, ProcessCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProcessCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Process.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProcessAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProcessAggregateArgs>(args: Subset<T, ProcessAggregateArgs>): Prisma.PrismaPromise<GetProcessAggregateType<T>>
+
+    /**
+     * Group by Process.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProcessGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProcessGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProcessGroupByArgs['orderBy'] }
+        : { orderBy?: ProcessGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProcessGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProcessGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Process model
+   */
+  readonly fields: ProcessFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Process.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProcessClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    deadlines<T extends Process$deadlinesArgs<ExtArgs> = {}>(args?: Subset<T, Process$deadlinesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Process model
+   */
+  interface ProcessFieldRefs {
+    readonly id: FieldRef<"Process", 'String'>
+    readonly name: FieldRef<"Process", 'String'>
+    readonly createdAt: FieldRef<"Process", 'DateTime'>
+    readonly startedOn: FieldRef<"Process", 'DateTime'>
+    readonly userId: FieldRef<"Process", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Process findUnique
+   */
+  export type ProcessFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * Filter, which Process to fetch.
+     */
+    where: ProcessWhereUniqueInput
+  }
+
+  /**
+   * Process findUniqueOrThrow
+   */
+  export type ProcessFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * Filter, which Process to fetch.
+     */
+    where: ProcessWhereUniqueInput
+  }
+
+  /**
+   * Process findFirst
+   */
+  export type ProcessFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * Filter, which Process to fetch.
+     */
+    where?: ProcessWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Processes to fetch.
+     */
+    orderBy?: ProcessOrderByWithRelationInput | ProcessOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Processes.
+     */
+    cursor?: ProcessWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Processes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Processes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Processes.
+     */
+    distinct?: ProcessScalarFieldEnum | ProcessScalarFieldEnum[]
+  }
+
+  /**
+   * Process findFirstOrThrow
+   */
+  export type ProcessFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * Filter, which Process to fetch.
+     */
+    where?: ProcessWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Processes to fetch.
+     */
+    orderBy?: ProcessOrderByWithRelationInput | ProcessOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Processes.
+     */
+    cursor?: ProcessWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Processes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Processes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Processes.
+     */
+    distinct?: ProcessScalarFieldEnum | ProcessScalarFieldEnum[]
+  }
+
+  /**
+   * Process findMany
+   */
+  export type ProcessFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * Filter, which Processes to fetch.
+     */
+    where?: ProcessWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Processes to fetch.
+     */
+    orderBy?: ProcessOrderByWithRelationInput | ProcessOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Processes.
+     */
+    cursor?: ProcessWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Processes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Processes.
+     */
+    skip?: number
+    distinct?: ProcessScalarFieldEnum | ProcessScalarFieldEnum[]
+  }
+
+  /**
+   * Process create
+   */
+  export type ProcessCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Process.
+     */
+    data: XOR<ProcessCreateInput, ProcessUncheckedCreateInput>
+  }
+
+  /**
+   * Process createMany
+   */
+  export type ProcessCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Processes.
+     */
+    data: ProcessCreateManyInput | ProcessCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Process createManyAndReturn
+   */
+  export type ProcessCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * The data used to create many Processes.
+     */
+    data: ProcessCreateManyInput | ProcessCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Process update
+   */
+  export type ProcessUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Process.
+     */
+    data: XOR<ProcessUpdateInput, ProcessUncheckedUpdateInput>
+    /**
+     * Choose, which Process to update.
+     */
+    where: ProcessWhereUniqueInput
+  }
+
+  /**
+   * Process updateMany
+   */
+  export type ProcessUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Processes.
+     */
+    data: XOR<ProcessUpdateManyMutationInput, ProcessUncheckedUpdateManyInput>
+    /**
+     * Filter which Processes to update
+     */
+    where?: ProcessWhereInput
+    /**
+     * Limit how many Processes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Process updateManyAndReturn
+   */
+  export type ProcessUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * The data used to update Processes.
+     */
+    data: XOR<ProcessUpdateManyMutationInput, ProcessUncheckedUpdateManyInput>
+    /**
+     * Filter which Processes to update
+     */
+    where?: ProcessWhereInput
+    /**
+     * Limit how many Processes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Process upsert
+   */
+  export type ProcessUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Process to update in case it exists.
+     */
+    where: ProcessWhereUniqueInput
+    /**
+     * In case the Process found by the `where` argument doesn't exist, create a new Process with this data.
+     */
+    create: XOR<ProcessCreateInput, ProcessUncheckedCreateInput>
+    /**
+     * In case the Process was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProcessUpdateInput, ProcessUncheckedUpdateInput>
+  }
+
+  /**
+   * Process delete
+   */
+  export type ProcessDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+    /**
+     * Filter which Process to delete.
+     */
+    where: ProcessWhereUniqueInput
+  }
+
+  /**
+   * Process deleteMany
+   */
+  export type ProcessDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Processes to delete
+     */
+    where?: ProcessWhereInput
+    /**
+     * Limit how many Processes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Process.deadlines
+   */
+  export type Process$deadlinesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    where?: DeadlineWhereInput
+    orderBy?: DeadlineOrderByWithRelationInput | DeadlineOrderByWithRelationInput[]
+    cursor?: DeadlineWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DeadlineScalarFieldEnum | DeadlineScalarFieldEnum[]
+  }
+
+  /**
+   * Process without action
+   */
+  export type ProcessDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Process
+     */
+    select?: ProcessSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Process
+     */
+    omit?: ProcessOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProcessInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Deadline
+   */
+
+  export type AggregateDeadline = {
+    _count: DeadlineCountAggregateOutputType | null
+    _min: DeadlineMinAggregateOutputType | null
+    _max: DeadlineMaxAggregateOutputType | null
+  }
+
+  export type DeadlineMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    processId: string | null
+  }
+
+  export type DeadlineMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    processId: string | null
+  }
+
+  export type DeadlineCountAggregateOutputType = {
+    id: number
+    name: number
+    processId: number
+    _all: number
+  }
+
+
+  export type DeadlineMinAggregateInputType = {
+    id?: true
+    name?: true
+    processId?: true
+  }
+
+  export type DeadlineMaxAggregateInputType = {
+    id?: true
+    name?: true
+    processId?: true
+  }
+
+  export type DeadlineCountAggregateInputType = {
+    id?: true
+    name?: true
+    processId?: true
+    _all?: true
+  }
+
+  export type DeadlineAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Deadline to aggregate.
+     */
+    where?: DeadlineWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Deadlines to fetch.
+     */
+    orderBy?: DeadlineOrderByWithRelationInput | DeadlineOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DeadlineWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Deadlines from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Deadlines.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Deadlines
+    **/
+    _count?: true | DeadlineCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DeadlineMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DeadlineMaxAggregateInputType
+  }
+
+  export type GetDeadlineAggregateType<T extends DeadlineAggregateArgs> = {
+        [P in keyof T & keyof AggregateDeadline]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDeadline[P]>
+      : GetScalarType<T[P], AggregateDeadline[P]>
+  }
+
+
+
+
+  export type DeadlineGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DeadlineWhereInput
+    orderBy?: DeadlineOrderByWithAggregationInput | DeadlineOrderByWithAggregationInput[]
+    by: DeadlineScalarFieldEnum[] | DeadlineScalarFieldEnum
+    having?: DeadlineScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DeadlineCountAggregateInputType | true
+    _min?: DeadlineMinAggregateInputType
+    _max?: DeadlineMaxAggregateInputType
+  }
+
+  export type DeadlineGroupByOutputType = {
+    id: string
+    name: string
+    processId: string
+    _count: DeadlineCountAggregateOutputType | null
+    _min: DeadlineMinAggregateOutputType | null
+    _max: DeadlineMaxAggregateOutputType | null
+  }
+
+  type GetDeadlineGroupByPayload<T extends DeadlineGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DeadlineGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DeadlineGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DeadlineGroupByOutputType[P]>
+            : GetScalarType<T[P], DeadlineGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DeadlineSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    processId?: boolean
+    process?: boolean | ProcessDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["deadline"]>
+
+  export type DeadlineSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    processId?: boolean
+    process?: boolean | ProcessDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["deadline"]>
+
+  export type DeadlineSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    processId?: boolean
+    process?: boolean | ProcessDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["deadline"]>
+
+  export type DeadlineSelectScalar = {
+    id?: boolean
+    name?: boolean
+    processId?: boolean
+  }
+
+  export type DeadlineOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "processId", ExtArgs["result"]["deadline"]>
+  export type DeadlineInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    process?: boolean | ProcessDefaultArgs<ExtArgs>
+  }
+  export type DeadlineIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    process?: boolean | ProcessDefaultArgs<ExtArgs>
+  }
+  export type DeadlineIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    process?: boolean | ProcessDefaultArgs<ExtArgs>
+  }
+
+  export type $DeadlinePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Deadline"
+    objects: {
+      process: Prisma.$ProcessPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      processId: string
+    }, ExtArgs["result"]["deadline"]>
+    composites: {}
+  }
+
+  type DeadlineGetPayload<S extends boolean | null | undefined | DeadlineDefaultArgs> = $Result.GetResult<Prisma.$DeadlinePayload, S>
+
+  type DeadlineCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DeadlineFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DeadlineCountAggregateInputType | true
+    }
+
+  export interface DeadlineDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Deadline'], meta: { name: 'Deadline' } }
+    /**
+     * Find zero or one Deadline that matches the filter.
+     * @param {DeadlineFindUniqueArgs} args - Arguments to find a Deadline
+     * @example
+     * // Get one Deadline
+     * const deadline = await prisma.deadline.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DeadlineFindUniqueArgs>(args: SelectSubset<T, DeadlineFindUniqueArgs<ExtArgs>>): Prisma__DeadlineClient<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Deadline that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DeadlineFindUniqueOrThrowArgs} args - Arguments to find a Deadline
+     * @example
+     * // Get one Deadline
+     * const deadline = await prisma.deadline.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DeadlineFindUniqueOrThrowArgs>(args: SelectSubset<T, DeadlineFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DeadlineClient<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Deadline that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeadlineFindFirstArgs} args - Arguments to find a Deadline
+     * @example
+     * // Get one Deadline
+     * const deadline = await prisma.deadline.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DeadlineFindFirstArgs>(args?: SelectSubset<T, DeadlineFindFirstArgs<ExtArgs>>): Prisma__DeadlineClient<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Deadline that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeadlineFindFirstOrThrowArgs} args - Arguments to find a Deadline
+     * @example
+     * // Get one Deadline
+     * const deadline = await prisma.deadline.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DeadlineFindFirstOrThrowArgs>(args?: SelectSubset<T, DeadlineFindFirstOrThrowArgs<ExtArgs>>): Prisma__DeadlineClient<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Deadlines that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeadlineFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Deadlines
+     * const deadlines = await prisma.deadline.findMany()
+     * 
+     * // Get first 10 Deadlines
+     * const deadlines = await prisma.deadline.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const deadlineWithIdOnly = await prisma.deadline.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DeadlineFindManyArgs>(args?: SelectSubset<T, DeadlineFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Deadline.
+     * @param {DeadlineCreateArgs} args - Arguments to create a Deadline.
+     * @example
+     * // Create one Deadline
+     * const Deadline = await prisma.deadline.create({
+     *   data: {
+     *     // ... data to create a Deadline
+     *   }
+     * })
+     * 
+     */
+    create<T extends DeadlineCreateArgs>(args: SelectSubset<T, DeadlineCreateArgs<ExtArgs>>): Prisma__DeadlineClient<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Deadlines.
+     * @param {DeadlineCreateManyArgs} args - Arguments to create many Deadlines.
+     * @example
+     * // Create many Deadlines
+     * const deadline = await prisma.deadline.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DeadlineCreateManyArgs>(args?: SelectSubset<T, DeadlineCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Deadlines and returns the data saved in the database.
+     * @param {DeadlineCreateManyAndReturnArgs} args - Arguments to create many Deadlines.
+     * @example
+     * // Create many Deadlines
+     * const deadline = await prisma.deadline.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Deadlines and only return the `id`
+     * const deadlineWithIdOnly = await prisma.deadline.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DeadlineCreateManyAndReturnArgs>(args?: SelectSubset<T, DeadlineCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Deadline.
+     * @param {DeadlineDeleteArgs} args - Arguments to delete one Deadline.
+     * @example
+     * // Delete one Deadline
+     * const Deadline = await prisma.deadline.delete({
+     *   where: {
+     *     // ... filter to delete one Deadline
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DeadlineDeleteArgs>(args: SelectSubset<T, DeadlineDeleteArgs<ExtArgs>>): Prisma__DeadlineClient<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Deadline.
+     * @param {DeadlineUpdateArgs} args - Arguments to update one Deadline.
+     * @example
+     * // Update one Deadline
+     * const deadline = await prisma.deadline.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DeadlineUpdateArgs>(args: SelectSubset<T, DeadlineUpdateArgs<ExtArgs>>): Prisma__DeadlineClient<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Deadlines.
+     * @param {DeadlineDeleteManyArgs} args - Arguments to filter Deadlines to delete.
+     * @example
+     * // Delete a few Deadlines
+     * const { count } = await prisma.deadline.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DeadlineDeleteManyArgs>(args?: SelectSubset<T, DeadlineDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Deadlines.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeadlineUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Deadlines
+     * const deadline = await prisma.deadline.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DeadlineUpdateManyArgs>(args: SelectSubset<T, DeadlineUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Deadlines and returns the data updated in the database.
+     * @param {DeadlineUpdateManyAndReturnArgs} args - Arguments to update many Deadlines.
+     * @example
+     * // Update many Deadlines
+     * const deadline = await prisma.deadline.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Deadlines and only return the `id`
+     * const deadlineWithIdOnly = await prisma.deadline.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DeadlineUpdateManyAndReturnArgs>(args: SelectSubset<T, DeadlineUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Deadline.
+     * @param {DeadlineUpsertArgs} args - Arguments to update or create a Deadline.
+     * @example
+     * // Update or create a Deadline
+     * const deadline = await prisma.deadline.upsert({
+     *   create: {
+     *     // ... data to create a Deadline
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Deadline we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DeadlineUpsertArgs>(args: SelectSubset<T, DeadlineUpsertArgs<ExtArgs>>): Prisma__DeadlineClient<$Result.GetResult<Prisma.$DeadlinePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Deadlines.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeadlineCountArgs} args - Arguments to filter Deadlines to count.
+     * @example
+     * // Count the number of Deadlines
+     * const count = await prisma.deadline.count({
+     *   where: {
+     *     // ... the filter for the Deadlines we want to count
+     *   }
+     * })
+    **/
+    count<T extends DeadlineCountArgs>(
+      args?: Subset<T, DeadlineCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DeadlineCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Deadline.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeadlineAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DeadlineAggregateArgs>(args: Subset<T, DeadlineAggregateArgs>): Prisma.PrismaPromise<GetDeadlineAggregateType<T>>
+
+    /**
+     * Group by Deadline.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeadlineGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DeadlineGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DeadlineGroupByArgs['orderBy'] }
+        : { orderBy?: DeadlineGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DeadlineGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDeadlineGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Deadline model
+   */
+  readonly fields: DeadlineFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Deadline.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DeadlineClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    process<T extends ProcessDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProcessDefaultArgs<ExtArgs>>): Prisma__ProcessClient<$Result.GetResult<Prisma.$ProcessPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Deadline model
+   */
+  interface DeadlineFieldRefs {
+    readonly id: FieldRef<"Deadline", 'String'>
+    readonly name: FieldRef<"Deadline", 'String'>
+    readonly processId: FieldRef<"Deadline", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Deadline findUnique
+   */
+  export type DeadlineFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * Filter, which Deadline to fetch.
+     */
+    where: DeadlineWhereUniqueInput
+  }
+
+  /**
+   * Deadline findUniqueOrThrow
+   */
+  export type DeadlineFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * Filter, which Deadline to fetch.
+     */
+    where: DeadlineWhereUniqueInput
+  }
+
+  /**
+   * Deadline findFirst
+   */
+  export type DeadlineFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * Filter, which Deadline to fetch.
+     */
+    where?: DeadlineWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Deadlines to fetch.
+     */
+    orderBy?: DeadlineOrderByWithRelationInput | DeadlineOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Deadlines.
+     */
+    cursor?: DeadlineWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Deadlines from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Deadlines.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Deadlines.
+     */
+    distinct?: DeadlineScalarFieldEnum | DeadlineScalarFieldEnum[]
+  }
+
+  /**
+   * Deadline findFirstOrThrow
+   */
+  export type DeadlineFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * Filter, which Deadline to fetch.
+     */
+    where?: DeadlineWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Deadlines to fetch.
+     */
+    orderBy?: DeadlineOrderByWithRelationInput | DeadlineOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Deadlines.
+     */
+    cursor?: DeadlineWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Deadlines from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Deadlines.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Deadlines.
+     */
+    distinct?: DeadlineScalarFieldEnum | DeadlineScalarFieldEnum[]
+  }
+
+  /**
+   * Deadline findMany
+   */
+  export type DeadlineFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * Filter, which Deadlines to fetch.
+     */
+    where?: DeadlineWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Deadlines to fetch.
+     */
+    orderBy?: DeadlineOrderByWithRelationInput | DeadlineOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Deadlines.
+     */
+    cursor?: DeadlineWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Deadlines from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Deadlines.
+     */
+    skip?: number
+    distinct?: DeadlineScalarFieldEnum | DeadlineScalarFieldEnum[]
+  }
+
+  /**
+   * Deadline create
+   */
+  export type DeadlineCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Deadline.
+     */
+    data: XOR<DeadlineCreateInput, DeadlineUncheckedCreateInput>
+  }
+
+  /**
+   * Deadline createMany
+   */
+  export type DeadlineCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Deadlines.
+     */
+    data: DeadlineCreateManyInput | DeadlineCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Deadline createManyAndReturn
+   */
+  export type DeadlineCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * The data used to create many Deadlines.
+     */
+    data: DeadlineCreateManyInput | DeadlineCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Deadline update
+   */
+  export type DeadlineUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Deadline.
+     */
+    data: XOR<DeadlineUpdateInput, DeadlineUncheckedUpdateInput>
+    /**
+     * Choose, which Deadline to update.
+     */
+    where: DeadlineWhereUniqueInput
+  }
+
+  /**
+   * Deadline updateMany
+   */
+  export type DeadlineUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Deadlines.
+     */
+    data: XOR<DeadlineUpdateManyMutationInput, DeadlineUncheckedUpdateManyInput>
+    /**
+     * Filter which Deadlines to update
+     */
+    where?: DeadlineWhereInput
+    /**
+     * Limit how many Deadlines to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Deadline updateManyAndReturn
+   */
+  export type DeadlineUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * The data used to update Deadlines.
+     */
+    data: XOR<DeadlineUpdateManyMutationInput, DeadlineUncheckedUpdateManyInput>
+    /**
+     * Filter which Deadlines to update
+     */
+    where?: DeadlineWhereInput
+    /**
+     * Limit how many Deadlines to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Deadline upsert
+   */
+  export type DeadlineUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Deadline to update in case it exists.
+     */
+    where: DeadlineWhereUniqueInput
+    /**
+     * In case the Deadline found by the `where` argument doesn't exist, create a new Deadline with this data.
+     */
+    create: XOR<DeadlineCreateInput, DeadlineUncheckedCreateInput>
+    /**
+     * In case the Deadline was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DeadlineUpdateInput, DeadlineUncheckedUpdateInput>
+  }
+
+  /**
+   * Deadline delete
+   */
+  export type DeadlineDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
+    /**
+     * Filter which Deadline to delete.
+     */
+    where: DeadlineWhereUniqueInput
+  }
+
+  /**
+   * Deadline deleteMany
+   */
+  export type DeadlineDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Deadlines to delete
+     */
+    where?: DeadlineWhereInput
+    /**
+     * Limit how many Deadlines to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Deadline without action
+   */
+  export type DeadlineDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deadline
+     */
+    select?: DeadlineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deadline
+     */
+    omit?: DeadlineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeadlineInclude<ExtArgs> | null
   }
 
 
@@ -1869,10 +4320,31 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
-    password: 'password'
+    password: 'password',
+    createdAt: 'createdAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const ProcessScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    createdAt: 'createdAt',
+    startedOn: 'startedOn',
+    userId: 'userId'
+  };
+
+  export type ProcessScalarFieldEnum = (typeof ProcessScalarFieldEnum)[keyof typeof ProcessScalarFieldEnum]
+
+
+  export const DeadlineScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    processId: 'processId'
+  };
+
+  export type DeadlineScalarFieldEnum = (typeof DeadlineScalarFieldEnum)[keyof typeof DeadlineScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1891,6 +4363,14 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Field references
    */
@@ -1907,6 +4387,20 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -1935,6 +4429,8 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    Process?: ProcessListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -1942,6 +4438,8 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    createdAt?: SortOrder
+    Process?: ProcessOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -1952,6 +4450,8 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    Process?: ProcessListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -1959,6 +4459,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    createdAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -1972,6 +4473,110 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  }
+
+  export type ProcessWhereInput = {
+    AND?: ProcessWhereInput | ProcessWhereInput[]
+    OR?: ProcessWhereInput[]
+    NOT?: ProcessWhereInput | ProcessWhereInput[]
+    id?: StringFilter<"Process"> | string
+    name?: StringFilter<"Process"> | string
+    createdAt?: DateTimeFilter<"Process"> | Date | string
+    startedOn?: DateTimeNullableFilter<"Process"> | Date | string | null
+    userId?: StringFilter<"Process"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    deadlines?: DeadlineListRelationFilter
+  }
+
+  export type ProcessOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    startedOn?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
+    deadlines?: DeadlineOrderByRelationAggregateInput
+  }
+
+  export type ProcessWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ProcessWhereInput | ProcessWhereInput[]
+    OR?: ProcessWhereInput[]
+    NOT?: ProcessWhereInput | ProcessWhereInput[]
+    name?: StringFilter<"Process"> | string
+    createdAt?: DateTimeFilter<"Process"> | Date | string
+    startedOn?: DateTimeNullableFilter<"Process"> | Date | string | null
+    userId?: StringFilter<"Process"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    deadlines?: DeadlineListRelationFilter
+  }, "id">
+
+  export type ProcessOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    startedOn?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    _count?: ProcessCountOrderByAggregateInput
+    _max?: ProcessMaxOrderByAggregateInput
+    _min?: ProcessMinOrderByAggregateInput
+  }
+
+  export type ProcessScalarWhereWithAggregatesInput = {
+    AND?: ProcessScalarWhereWithAggregatesInput | ProcessScalarWhereWithAggregatesInput[]
+    OR?: ProcessScalarWhereWithAggregatesInput[]
+    NOT?: ProcessScalarWhereWithAggregatesInput | ProcessScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Process"> | string
+    name?: StringWithAggregatesFilter<"Process"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Process"> | Date | string
+    startedOn?: DateTimeNullableWithAggregatesFilter<"Process"> | Date | string | null
+    userId?: StringWithAggregatesFilter<"Process"> | string
+  }
+
+  export type DeadlineWhereInput = {
+    AND?: DeadlineWhereInput | DeadlineWhereInput[]
+    OR?: DeadlineWhereInput[]
+    NOT?: DeadlineWhereInput | DeadlineWhereInput[]
+    id?: StringFilter<"Deadline"> | string
+    name?: StringFilter<"Deadline"> | string
+    processId?: StringFilter<"Deadline"> | string
+    process?: XOR<ProcessScalarRelationFilter, ProcessWhereInput>
+  }
+
+  export type DeadlineOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    processId?: SortOrder
+    process?: ProcessOrderByWithRelationInput
+  }
+
+  export type DeadlineWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DeadlineWhereInput | DeadlineWhereInput[]
+    OR?: DeadlineWhereInput[]
+    NOT?: DeadlineWhereInput | DeadlineWhereInput[]
+    name?: StringFilter<"Deadline"> | string
+    processId?: StringFilter<"Deadline"> | string
+    process?: XOR<ProcessScalarRelationFilter, ProcessWhereInput>
+  }, "id">
+
+  export type DeadlineOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    processId?: SortOrder
+    _count?: DeadlineCountOrderByAggregateInput
+    _max?: DeadlineMaxOrderByAggregateInput
+    _min?: DeadlineMinOrderByAggregateInput
+  }
+
+  export type DeadlineScalarWhereWithAggregatesInput = {
+    AND?: DeadlineScalarWhereWithAggregatesInput | DeadlineScalarWhereWithAggregatesInput[]
+    OR?: DeadlineScalarWhereWithAggregatesInput[]
+    NOT?: DeadlineScalarWhereWithAggregatesInput | DeadlineScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Deadline"> | string
+    name?: StringWithAggregatesFilter<"Deadline"> | string
+    processId?: StringWithAggregatesFilter<"Deadline"> | string
   }
 
   export type UserCreateInput = {
@@ -1979,6 +4584,8 @@ export namespace Prisma {
     name: string
     email: string
     password: string
+    createdAt?: Date | string
+    Process?: ProcessCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -1986,6 +4593,8 @@ export namespace Prisma {
     name: string
     email: string
     password: string
+    createdAt?: Date | string
+    Process?: ProcessUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -1993,6 +4602,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Process?: ProcessUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -2000,6 +4611,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Process?: ProcessUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -2007,6 +4620,7 @@ export namespace Prisma {
     name: string
     email: string
     password: string
+    createdAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -2014,6 +4628,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -2021,6 +4636,107 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProcessCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    startedOn?: Date | string | null
+    user: UserCreateNestedOneWithoutProcessInput
+    deadlines?: DeadlineCreateNestedManyWithoutProcessInput
+  }
+
+  export type ProcessUncheckedCreateInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    startedOn?: Date | string | null
+    userId: string
+    deadlines?: DeadlineUncheckedCreateNestedManyWithoutProcessInput
+  }
+
+  export type ProcessUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneRequiredWithoutProcessNestedInput
+    deadlines?: DeadlineUpdateManyWithoutProcessNestedInput
+  }
+
+  export type ProcessUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+    deadlines?: DeadlineUncheckedUpdateManyWithoutProcessNestedInput
+  }
+
+  export type ProcessCreateManyInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    startedOn?: Date | string | null
+    userId: string
+  }
+
+  export type ProcessUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ProcessUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DeadlineCreateInput = {
+    id?: string
+    name: string
+    process: ProcessCreateNestedOneWithoutDeadlinesInput
+  }
+
+  export type DeadlineUncheckedCreateInput = {
+    id?: string
+    name: string
+    processId: string
+  }
+
+  export type DeadlineUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    process?: ProcessUpdateOneRequiredWithoutDeadlinesNestedInput
+  }
+
+  export type DeadlineUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    processId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DeadlineCreateManyInput = {
+    id?: string
+    name: string
+    processId: string
+  }
+
+  export type DeadlineUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DeadlineUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    processId?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2038,11 +4754,33 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type ProcessListRelationFilter = {
+    every?: ProcessWhereInput
+    some?: ProcessWhereInput
+    none?: ProcessWhereInput
+  }
+
+  export type ProcessOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -2050,6 +4788,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -2057,6 +4796,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     password?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2077,8 +4817,234 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type DeadlineListRelationFilter = {
+    every?: DeadlineWhereInput
+    some?: DeadlineWhereInput
+    none?: DeadlineWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type DeadlineOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ProcessCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    startedOn?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ProcessMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    startedOn?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type ProcessMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    createdAt?: SortOrder
+    startedOn?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type ProcessScalarRelationFilter = {
+    is?: ProcessWhereInput
+    isNot?: ProcessWhereInput
+  }
+
+  export type DeadlineCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    processId?: SortOrder
+  }
+
+  export type DeadlineMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    processId?: SortOrder
+  }
+
+  export type DeadlineMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    processId?: SortOrder
+  }
+
+  export type ProcessCreateNestedManyWithoutUserInput = {
+    create?: XOR<ProcessCreateWithoutUserInput, ProcessUncheckedCreateWithoutUserInput> | ProcessCreateWithoutUserInput[] | ProcessUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProcessCreateOrConnectWithoutUserInput | ProcessCreateOrConnectWithoutUserInput[]
+    createMany?: ProcessCreateManyUserInputEnvelope
+    connect?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+  }
+
+  export type ProcessUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ProcessCreateWithoutUserInput, ProcessUncheckedCreateWithoutUserInput> | ProcessCreateWithoutUserInput[] | ProcessUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProcessCreateOrConnectWithoutUserInput | ProcessCreateOrConnectWithoutUserInput[]
+    createMany?: ProcessCreateManyUserInputEnvelope
+    connect?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type ProcessUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ProcessCreateWithoutUserInput, ProcessUncheckedCreateWithoutUserInput> | ProcessCreateWithoutUserInput[] | ProcessUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProcessCreateOrConnectWithoutUserInput | ProcessCreateOrConnectWithoutUserInput[]
+    upsert?: ProcessUpsertWithWhereUniqueWithoutUserInput | ProcessUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ProcessCreateManyUserInputEnvelope
+    set?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+    disconnect?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+    delete?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+    connect?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+    update?: ProcessUpdateWithWhereUniqueWithoutUserInput | ProcessUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ProcessUpdateManyWithWhereWithoutUserInput | ProcessUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ProcessScalarWhereInput | ProcessScalarWhereInput[]
+  }
+
+  export type ProcessUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ProcessCreateWithoutUserInput, ProcessUncheckedCreateWithoutUserInput> | ProcessCreateWithoutUserInput[] | ProcessUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ProcessCreateOrConnectWithoutUserInput | ProcessCreateOrConnectWithoutUserInput[]
+    upsert?: ProcessUpsertWithWhereUniqueWithoutUserInput | ProcessUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ProcessCreateManyUserInputEnvelope
+    set?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+    disconnect?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+    delete?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+    connect?: ProcessWhereUniqueInput | ProcessWhereUniqueInput[]
+    update?: ProcessUpdateWithWhereUniqueWithoutUserInput | ProcessUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ProcessUpdateManyWithWhereWithoutUserInput | ProcessUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ProcessScalarWhereInput | ProcessScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutProcessInput = {
+    create?: XOR<UserCreateWithoutProcessInput, UserUncheckedCreateWithoutProcessInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProcessInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type DeadlineCreateNestedManyWithoutProcessInput = {
+    create?: XOR<DeadlineCreateWithoutProcessInput, DeadlineUncheckedCreateWithoutProcessInput> | DeadlineCreateWithoutProcessInput[] | DeadlineUncheckedCreateWithoutProcessInput[]
+    connectOrCreate?: DeadlineCreateOrConnectWithoutProcessInput | DeadlineCreateOrConnectWithoutProcessInput[]
+    createMany?: DeadlineCreateManyProcessInputEnvelope
+    connect?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+  }
+
+  export type DeadlineUncheckedCreateNestedManyWithoutProcessInput = {
+    create?: XOR<DeadlineCreateWithoutProcessInput, DeadlineUncheckedCreateWithoutProcessInput> | DeadlineCreateWithoutProcessInput[] | DeadlineUncheckedCreateWithoutProcessInput[]
+    connectOrCreate?: DeadlineCreateOrConnectWithoutProcessInput | DeadlineCreateOrConnectWithoutProcessInput[]
+    createMany?: DeadlineCreateManyProcessInputEnvelope
+    connect?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type UserUpdateOneRequiredWithoutProcessNestedInput = {
+    create?: XOR<UserCreateWithoutProcessInput, UserUncheckedCreateWithoutProcessInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProcessInput
+    upsert?: UserUpsertWithoutProcessInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProcessInput, UserUpdateWithoutProcessInput>, UserUncheckedUpdateWithoutProcessInput>
+  }
+
+  export type DeadlineUpdateManyWithoutProcessNestedInput = {
+    create?: XOR<DeadlineCreateWithoutProcessInput, DeadlineUncheckedCreateWithoutProcessInput> | DeadlineCreateWithoutProcessInput[] | DeadlineUncheckedCreateWithoutProcessInput[]
+    connectOrCreate?: DeadlineCreateOrConnectWithoutProcessInput | DeadlineCreateOrConnectWithoutProcessInput[]
+    upsert?: DeadlineUpsertWithWhereUniqueWithoutProcessInput | DeadlineUpsertWithWhereUniqueWithoutProcessInput[]
+    createMany?: DeadlineCreateManyProcessInputEnvelope
+    set?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+    disconnect?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+    delete?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+    connect?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+    update?: DeadlineUpdateWithWhereUniqueWithoutProcessInput | DeadlineUpdateWithWhereUniqueWithoutProcessInput[]
+    updateMany?: DeadlineUpdateManyWithWhereWithoutProcessInput | DeadlineUpdateManyWithWhereWithoutProcessInput[]
+    deleteMany?: DeadlineScalarWhereInput | DeadlineScalarWhereInput[]
+  }
+
+  export type DeadlineUncheckedUpdateManyWithoutProcessNestedInput = {
+    create?: XOR<DeadlineCreateWithoutProcessInput, DeadlineUncheckedCreateWithoutProcessInput> | DeadlineCreateWithoutProcessInput[] | DeadlineUncheckedCreateWithoutProcessInput[]
+    connectOrCreate?: DeadlineCreateOrConnectWithoutProcessInput | DeadlineCreateOrConnectWithoutProcessInput[]
+    upsert?: DeadlineUpsertWithWhereUniqueWithoutProcessInput | DeadlineUpsertWithWhereUniqueWithoutProcessInput[]
+    createMany?: DeadlineCreateManyProcessInputEnvelope
+    set?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+    disconnect?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+    delete?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+    connect?: DeadlineWhereUniqueInput | DeadlineWhereUniqueInput[]
+    update?: DeadlineUpdateWithWhereUniqueWithoutProcessInput | DeadlineUpdateWithWhereUniqueWithoutProcessInput[]
+    updateMany?: DeadlineUpdateManyWithWhereWithoutProcessInput | DeadlineUpdateManyWithWhereWithoutProcessInput[]
+    deleteMany?: DeadlineScalarWhereInput | DeadlineScalarWhereInput[]
+  }
+
+  export type ProcessCreateNestedOneWithoutDeadlinesInput = {
+    create?: XOR<ProcessCreateWithoutDeadlinesInput, ProcessUncheckedCreateWithoutDeadlinesInput>
+    connectOrCreate?: ProcessCreateOrConnectWithoutDeadlinesInput
+    connect?: ProcessWhereUniqueInput
+  }
+
+  export type ProcessUpdateOneRequiredWithoutDeadlinesNestedInput = {
+    create?: XOR<ProcessCreateWithoutDeadlinesInput, ProcessUncheckedCreateWithoutDeadlinesInput>
+    connectOrCreate?: ProcessCreateOrConnectWithoutDeadlinesInput
+    upsert?: ProcessUpsertWithoutDeadlinesInput
+    connect?: ProcessWhereUniqueInput
+    update?: XOR<XOR<ProcessUpdateToOneWithWhereWithoutDeadlinesInput, ProcessUpdateWithoutDeadlinesInput>, ProcessUncheckedUpdateWithoutDeadlinesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2093,6 +5059,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2121,6 +5098,300 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type ProcessCreateWithoutUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    startedOn?: Date | string | null
+    deadlines?: DeadlineCreateNestedManyWithoutProcessInput
+  }
+
+  export type ProcessUncheckedCreateWithoutUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    startedOn?: Date | string | null
+    deadlines?: DeadlineUncheckedCreateNestedManyWithoutProcessInput
+  }
+
+  export type ProcessCreateOrConnectWithoutUserInput = {
+    where: ProcessWhereUniqueInput
+    create: XOR<ProcessCreateWithoutUserInput, ProcessUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProcessCreateManyUserInputEnvelope = {
+    data: ProcessCreateManyUserInput | ProcessCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProcessUpsertWithWhereUniqueWithoutUserInput = {
+    where: ProcessWhereUniqueInput
+    update: XOR<ProcessUpdateWithoutUserInput, ProcessUncheckedUpdateWithoutUserInput>
+    create: XOR<ProcessCreateWithoutUserInput, ProcessUncheckedCreateWithoutUserInput>
+  }
+
+  export type ProcessUpdateWithWhereUniqueWithoutUserInput = {
+    where: ProcessWhereUniqueInput
+    data: XOR<ProcessUpdateWithoutUserInput, ProcessUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ProcessUpdateManyWithWhereWithoutUserInput = {
+    where: ProcessScalarWhereInput
+    data: XOR<ProcessUpdateManyMutationInput, ProcessUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ProcessScalarWhereInput = {
+    AND?: ProcessScalarWhereInput | ProcessScalarWhereInput[]
+    OR?: ProcessScalarWhereInput[]
+    NOT?: ProcessScalarWhereInput | ProcessScalarWhereInput[]
+    id?: StringFilter<"Process"> | string
+    name?: StringFilter<"Process"> | string
+    createdAt?: DateTimeFilter<"Process"> | Date | string
+    startedOn?: DateTimeNullableFilter<"Process"> | Date | string | null
+    userId?: StringFilter<"Process"> | string
+  }
+
+  export type UserCreateWithoutProcessInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+  }
+
+  export type UserUncheckedCreateWithoutProcessInput = {
+    id?: string
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+  }
+
+  export type UserCreateOrConnectWithoutProcessInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProcessInput, UserUncheckedCreateWithoutProcessInput>
+  }
+
+  export type DeadlineCreateWithoutProcessInput = {
+    id?: string
+    name: string
+  }
+
+  export type DeadlineUncheckedCreateWithoutProcessInput = {
+    id?: string
+    name: string
+  }
+
+  export type DeadlineCreateOrConnectWithoutProcessInput = {
+    where: DeadlineWhereUniqueInput
+    create: XOR<DeadlineCreateWithoutProcessInput, DeadlineUncheckedCreateWithoutProcessInput>
+  }
+
+  export type DeadlineCreateManyProcessInputEnvelope = {
+    data: DeadlineCreateManyProcessInput | DeadlineCreateManyProcessInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutProcessInput = {
+    update: XOR<UserUpdateWithoutProcessInput, UserUncheckedUpdateWithoutProcessInput>
+    create: XOR<UserCreateWithoutProcessInput, UserUncheckedCreateWithoutProcessInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProcessInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProcessInput, UserUncheckedUpdateWithoutProcessInput>
+  }
+
+  export type UserUpdateWithoutProcessInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUncheckedUpdateWithoutProcessInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeadlineUpsertWithWhereUniqueWithoutProcessInput = {
+    where: DeadlineWhereUniqueInput
+    update: XOR<DeadlineUpdateWithoutProcessInput, DeadlineUncheckedUpdateWithoutProcessInput>
+    create: XOR<DeadlineCreateWithoutProcessInput, DeadlineUncheckedCreateWithoutProcessInput>
+  }
+
+  export type DeadlineUpdateWithWhereUniqueWithoutProcessInput = {
+    where: DeadlineWhereUniqueInput
+    data: XOR<DeadlineUpdateWithoutProcessInput, DeadlineUncheckedUpdateWithoutProcessInput>
+  }
+
+  export type DeadlineUpdateManyWithWhereWithoutProcessInput = {
+    where: DeadlineScalarWhereInput
+    data: XOR<DeadlineUpdateManyMutationInput, DeadlineUncheckedUpdateManyWithoutProcessInput>
+  }
+
+  export type DeadlineScalarWhereInput = {
+    AND?: DeadlineScalarWhereInput | DeadlineScalarWhereInput[]
+    OR?: DeadlineScalarWhereInput[]
+    NOT?: DeadlineScalarWhereInput | DeadlineScalarWhereInput[]
+    id?: StringFilter<"Deadline"> | string
+    name?: StringFilter<"Deadline"> | string
+    processId?: StringFilter<"Deadline"> | string
+  }
+
+  export type ProcessCreateWithoutDeadlinesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    startedOn?: Date | string | null
+    user: UserCreateNestedOneWithoutProcessInput
+  }
+
+  export type ProcessUncheckedCreateWithoutDeadlinesInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    startedOn?: Date | string | null
+    userId: string
+  }
+
+  export type ProcessCreateOrConnectWithoutDeadlinesInput = {
+    where: ProcessWhereUniqueInput
+    create: XOR<ProcessCreateWithoutDeadlinesInput, ProcessUncheckedCreateWithoutDeadlinesInput>
+  }
+
+  export type ProcessUpsertWithoutDeadlinesInput = {
+    update: XOR<ProcessUpdateWithoutDeadlinesInput, ProcessUncheckedUpdateWithoutDeadlinesInput>
+    create: XOR<ProcessCreateWithoutDeadlinesInput, ProcessUncheckedCreateWithoutDeadlinesInput>
+    where?: ProcessWhereInput
+  }
+
+  export type ProcessUpdateToOneWithWhereWithoutDeadlinesInput = {
+    where?: ProcessWhereInput
+    data: XOR<ProcessUpdateWithoutDeadlinesInput, ProcessUncheckedUpdateWithoutDeadlinesInput>
+  }
+
+  export type ProcessUpdateWithoutDeadlinesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneRequiredWithoutProcessNestedInput
+  }
+
+  export type ProcessUncheckedUpdateWithoutDeadlinesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProcessCreateManyUserInput = {
+    id?: string
+    name: string
+    createdAt?: Date | string
+    startedOn?: Date | string | null
+  }
+
+  export type ProcessUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deadlines?: DeadlineUpdateManyWithoutProcessNestedInput
+  }
+
+  export type ProcessUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deadlines?: DeadlineUncheckedUpdateManyWithoutProcessNestedInput
+  }
+
+  export type ProcessUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    startedOn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DeadlineCreateManyProcessInput = {
+    id?: string
+    name: string
+  }
+
+  export type DeadlineUpdateWithoutProcessInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DeadlineUncheckedUpdateWithoutProcessInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type DeadlineUncheckedUpdateManyWithoutProcessInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
 
