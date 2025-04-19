@@ -1,5 +1,6 @@
 import { env } from '@/config/env'
 
+import { EmailAlreadyExistsError } from '@/errors/email-already-exists-error'
 import fastifyJwt from '@fastify/jwt'
 import { fastify } from 'fastify'
 import {
@@ -8,8 +9,9 @@ import {
 	serializerCompiler,
 	validatorCompiler,
 } from 'fastify-type-provider-zod'
-import { authRouter } from './controllers/routes/auth/router'
-import { SessionsRouter } from './controllers/sessions/route'
+import { authenthicateWithEmail } from './routes/auth/authenthicate-with-email'
+import { createAccount } from './routes/auth/create-account'
+import { getProfile } from './routes/auth/get-profile'
 
 export const server = fastify()
 
@@ -19,7 +21,8 @@ server.setSerializerCompiler(serializerCompiler)
 server.setErrorHandler((error, request, reply) => {
 	if (hasZodFastifySchemaValidationErrors(error)) {
 		return reply.status(400).send({
-			message: 'Validation Error',
+			error: 'Validation Error',
+			message: error.message,
 			details: {
 				issues: error.validation,
 				method: request.method,
@@ -39,6 +42,13 @@ server.setErrorHandler((error, request, reply) => {
 		})
 	}
 
+	if (error instanceof EmailAlreadyExistsError) {
+		return reply.status(409).send({
+			error: 'Validation Error',
+			message: error.message,
+		})
+	}
+
 	console.error(error)
 
 	return reply.status(500).send({ message: 'Internal server error' })
@@ -48,8 +58,9 @@ server.register(fastifyJwt, {
 	secret: env.JWT_SECRET,
 })
 
-server.register(authRouter)
-server.register(SessionsRouter)
+server.register(createAccount)
+server.register(authenthicateWithEmail)
+server.register(getProfile)
 
 server
 	.listen({

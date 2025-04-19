@@ -1,7 +1,7 @@
 import type { UserRepository } from '@/interfaces/users-repository'
+import { EmailAlreadyExistsError } from '@errors/email-already-exists-error'
 import { hash } from 'bcryptjs'
 import type { User } from 'generated/prisma'
-import { EmailAlreadyExistsError } from './errors/email-already-exists-error'
 
 interface CreateAccountUseCaseInput {
 	name: string

@@ -1,10 +1,13 @@
 {
 	"extends": "@limine/typescript-config/node.json",
+	"include": ["src/**/*", "@types/**/*"],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["src/*"],
-			"@repositories/*": ["src/repositories/*"]
+			"@repositories/*": ["src/repositories/*"],
+			"@interfaces/*": ["src/interfaces/*"],
+			"@errors/*": ["src/errors/*"]
 		}
 	}
 }
