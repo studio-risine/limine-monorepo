@@ -1,49 +1,35 @@
-import { prisma } from '@/lib/prisma'
-import type { FastifyInstance } from 'fastify'
-import type { ZodTypeProvider } from 'fastify-type-provider-zod'
+import { makeCreateAccountUseCase } from '@/factories/make-create-account'
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 
-import { hash } from 'bcryptjs'
-
-export async function createAccount(app: FastifyInstance) {
-	app.withTypeProvider<ZodTypeProvider>().post(
-		'/users',
+export const createAccount: FastifyPluginAsyncZod = async (app) => {
+	app.post(
+		'/account',
 		{
 			schema: {
-				description: 'Create a new account',
 				body: z.object({
 					name: z.string().min(2),
 					email: z.string().email(),
 					password: z.string().min(6),
 				}),
+				response: {
+					201: z.string(),
+				},
 			},
 		},
+
 		async (request, reply) => {
 			const { name, email, password } = request.body
 
-			const useWithSameEmail = await prisma.user.findUnique({
-				where: {
-					email,
-				},
+			const createAccount = makeCreateAccountUseCase()
+
+			const { user } = await createAccount.execute({
+				name,
+				email,
+				password,
 			})
 
-			if (useWithSameEmail) {
-				reply.status(400).send({
-					message: 'User with this email already exists',
-				})
-			}
-
-			const passwordHash = await hash(password, 8)
-
-			await prisma.user.create({
-				data: {
-					name,
-					email,
-					passwordHash,
-				},
-			})
-
-			return replay.status(201).send()
+			return reply.status(201).send()
 		},
 	)
 }

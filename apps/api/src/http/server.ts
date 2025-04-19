@@ -1,48 +1,71 @@
-import { env } from '@/config/env'
-import cors from '@fastify/cors'
+import { EmailAlreadyExistsError } from '@/errors/email-already-exists-error'
+import fastifyJwt from '@fastify/jwt'
+import { env } from '@limine/env'
 import { fastify } from 'fastify'
-
-import fastifySwagger from '@fastify/swagger'
-import fastifySwaggerUi from '@fastify/swagger-ui'
 import {
-	type ZodTypeProvider,
-	jsonSchemaTransform,
+	hasZodFastifySchemaValidationErrors,
+	isResponseSerializationError,
 	serializerCompiler,
 	validatorCompiler,
 } from 'fastify-type-provider-zod'
+import { authenthicateWithEmail } from './routes/auth/authenthicate-with-email'
 import { createAccount } from './routes/auth/create-account'
+import { getProfile } from './routes/auth/get-profile'
 
-const app = fastify({
-	logger: true,
-}).withTypeProvider<ZodTypeProvider>()
+export const server = fastify()
 
-app.setSerializerCompiler(serializerCompiler)
-app.setValidatorCompiler(validatorCompiler)
+server.setValidatorCompiler(validatorCompiler)
+server.setSerializerCompiler(serializerCompiler)
 
-app.register(fastifySwagger, {
-	openapi: {
-		info: {
-			title: 'Limine API',
-			description: '',
-			version: '0.2.0',
-		},
-		servers: [],
-	},
-	transform: jsonSchemaTransform,
+server.setErrorHandler((error, request, reply) => {
+	if (hasZodFastifySchemaValidationErrors(error)) {
+		return reply.status(400).send({
+			error: 'Validation Error',
+			message: error.message,
+			details: {
+				issues: error.validation,
+				method: request.method,
+				url: request.url,
+			},
+		})
+	}
+
+	if (isResponseSerializationError(error)) {
+		return reply.status(500).send({
+			message: 'Internal server error',
+			details: {
+				issues: error.cause.issues,
+				method: error.method,
+				url: error.url,
+			},
+		})
+	}
+
+	if (error instanceof EmailAlreadyExistsError) {
+		return reply.status(409).send({
+			error: 'Validation Error',
+			message: error.message,
+		})
+	}
+
+	console.error(error)
+
+	return reply.status(500).send({ message: 'Internal server error' })
 })
 
-app.register(fastifySwaggerUi, {
-	routePrefix: '/docs',
+server.register(fastifyJwt, {
+	secret: env.JWT_SECRET,
 })
 
-app.register(cors)
-app.register(createAccount)
+server.register(createAccount)
+server.register(authenthicateWithEmail)
+server.register(getProfile)
 
-app
+server
 	.listen({
-		host: env.HOST,
-		port: env.PORT,
+		host: '0.0.0.0',
+		port: env.SERVER_PORT,
 	})
 	.then(() => {
-		console.log(`🚀 HTTP server running on http://localhost:${env.PORT}`)
+		console.log(`🚀 HTTP server running on http://localhost:${env.SERVER_PORT}`)
 	})

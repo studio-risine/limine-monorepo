@@ -1,0 +1,13 @@
+{
+  "name": "@limine/env",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "@limine/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "zod": "catalog:"
+  }
+}

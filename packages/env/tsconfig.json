@@ -1,0 +1,3 @@
+{
+	"extends": ["@limine/typescript-config/node.json"]
+}
