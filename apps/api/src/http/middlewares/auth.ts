@@ -1,5 +1,4 @@
 import { InvalidCredentialsError } from '@/errors/invalid-credentials-error'
-import type { FastifyInstance } from 'fastify'
 import { fastifyPlugin } from 'fastify-plugin'
 
 export const auth = fastifyPlugin(async (app) => {

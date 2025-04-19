@@ -4,7 +4,10 @@
   "description": "",
   "main": "src/http/server.ts",
   "scripts": {
-    "dev": "tsx watch --env-file .env src/http/server.ts",
+    "dev": "pnpm env:load tsx watch src/http/server.ts",
+    "db:migrate": "pnpm env:load prisma migrate dev",
+    "db:studio": "pnpm env:load prisma studio",
+    "env:load": "dotenv -e ../../.env --",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
@@ -16,6 +19,7 @@
     "@fastify/jwt": "^9.1.0",
     "@fastify/swagger": "^9.4.2",
     "@fastify/swagger-ui": "^5.2.2",
+    "@limine/env": "workspace:*",
     "@limine/typescript-config": "workspace:*",
     "@prisma/client": "6.5.0",
     "bcryptjs": "^3.0.2",
@@ -27,6 +31,8 @@
   "devDependencies": {
     "@faker-js/faker": "^9.6.0",
     "@types/node": "catalog:",
+    "dotenv": "catalog:",
+    "dotenv-cli": "catalog:",
     "prisma": "^6.5.0",
     "tsx": "^4.19.3",
     "typescript": "catalog:",

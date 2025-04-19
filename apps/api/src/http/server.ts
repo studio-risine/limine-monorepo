@@ -1,7 +1,6 @@
-import { env } from '@/config/env'
-
 import { EmailAlreadyExistsError } from '@/errors/email-already-exists-error'
 import fastifyJwt from '@fastify/jwt'
+import { env } from '@limine/env'
 import { fastify } from 'fastify'
 import {
 	hasZodFastifySchemaValidationErrors,
@@ -64,9 +63,9 @@ server.register(getProfile)
 
 server
 	.listen({
-		host: env.HOST,
-		port: env.PORT,
+		host: '0.0.0.0',
+		port: env.SERVER_PORT,
 	})
 	.then(() => {
-		console.log(`🚀 HTTP server running on http://localhost:${env.PORT}`)
+		console.log(`🚀 HTTP server running on http://localhost:${env.SERVER_PORT}`)
 	})
