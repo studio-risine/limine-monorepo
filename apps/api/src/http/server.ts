@@ -1,10 +1,13 @@
 import { EmailAlreadyExistsError } from '@/errors/email-already-exists-error'
 import fastifyJwt from '@fastify/jwt'
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUi from '@fastify/swagger-ui'
 import { env } from '@limine/env'
 import { fastify } from 'fastify'
 import {
 	hasZodFastifySchemaValidationErrors,
 	isResponseSerializationError,
+	jsonSchemaTransform,
 	serializerCompiler,
 	validatorCompiler,
 } from 'fastify-type-provider-zod'
@@ -16,6 +19,22 @@ export const server = fastify()
 
 server.setValidatorCompiler(validatorCompiler)
 server.setSerializerCompiler(serializerCompiler)
+
+server.register(fastifySwagger, {
+	openapi: {
+		info: {
+			title: 'Limine API',
+			description: '',
+			version: '0.3.0',
+		},
+		servers: [],
+	},
+	transform: jsonSchemaTransform,
+})
+
+server.register(fastifySwaggerUi, {
+	routePrefix: '/docs',
+})
 
 server.setErrorHandler((error, request, reply) => {
 	if (hasZodFastifySchemaValidationErrors(error)) {
