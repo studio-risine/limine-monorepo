@@ -63,7 +63,7 @@ importers:
         specifier: ^9.1.0
         version: 9.1.0
       '@fastify/swagger':
-        specifier: ^9.4.2
+        specifier: ^9.5.0
         version: 9.5.0
       '@fastify/swagger-ui':
         specifier: ^5.2.2

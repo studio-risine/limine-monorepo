@@ -1,14 +1,10 @@
 import { ResourceNotFound } from '@/errors/resource-not-found'
 import type { UserRepository } from '@interfaces/users-repository'
 
-interface GetProfileInput {
-	id: string
-}
-
-export class GetProfileUseCase {
+export class GetUserByIdUseCase {
 	constructor(private userRepository: UserRepository) {}
 
-	async execute({ id }: GetProfileInput) {
+	async execute(id: string) {
 		const user = await this.userRepository.findById(id)
 
 		if (!user) {
@@ -16,9 +12,7 @@ export class GetProfileUseCase {
 		}
 
 		return {
-			id: user.id,
-			name: user.name,
-			email: user.email,
+			user,
 		}
 	}
 }

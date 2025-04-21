@@ -7,6 +7,7 @@
 			"@/*": ["src/*"],
 			"@repositories/*": ["src/repositories/*"],
 			"@interfaces/*": ["src/interfaces/*"],
+			"@useCase/*": ["src/useCase/*"],
 			"@errors/*": ["src/errors/*"]
 		}
 	}
