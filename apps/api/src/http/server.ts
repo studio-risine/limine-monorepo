@@ -1,4 +1,5 @@
 import { EmailAlreadyExistsError } from '@/errors/email-already-exists-error'
+import { ResourceNotFound } from '@/errors/resource-not-found'
 import { UnauthorizedError } from '@/errors/unauthorized-error'
 import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
@@ -31,6 +32,15 @@ server.register(fastifySwagger, {
 			version: '0.3.0',
 		},
 		servers: [],
+		components: {
+			securitySchemes: {
+				bearerAuth: {
+					type: 'http',
+					scheme: 'bearer',
+					bearerFormat: 'JWT',
+				},
+			},
+		},
 	},
 	transform: jsonSchemaTransform,
 })
@@ -73,6 +83,13 @@ server.setErrorHandler((error, request, reply) => {
 	if (error instanceof UnauthorizedError) {
 		return reply.status(401).send({
 			error: 'Unauthorized',
+			message: error.message,
+		})
+	}
+
+	if (error instanceof ResourceNotFound) {
+		return reply.status(404).send({
+			error: 'Not found',
 			message: error.message,
 		})
 	}

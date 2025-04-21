@@ -1,4 +1,3 @@
-import { UnauthorizedError } from '@/errors/unauthorized-error'
 import { makeUpdateUserPassword } from '@/factories/make-update-user-password'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
