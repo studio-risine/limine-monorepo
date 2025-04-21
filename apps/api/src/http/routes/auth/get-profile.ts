@@ -8,7 +8,8 @@ export const getProfile: FastifyPluginAsyncZod = async (app) => {
 		'/me',
 		{
 			schema: {
-				tags: ['auth'],
+				tags: ['account'],
+				summary: 'Get user profile',
 				response: {
 					200: z.object({
 						user: z.object({

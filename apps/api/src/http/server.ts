@@ -1,4 +1,5 @@
 import { EmailAlreadyExistsError } from '@/errors/email-already-exists-error'
+import { UnauthorizedError } from '@/errors/unauthorized-error'
 import fastifyJwt from '@fastify/jwt'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUi from '@fastify/swagger-ui'
@@ -14,6 +15,8 @@ import {
 import { authenthicateWithEmail } from './routes/auth/authenthicate-with-email'
 import { createAccount } from './routes/auth/create-account'
 import { getProfile } from './routes/auth/get-profile'
+import { requestPasswordRecover } from './routes/auth/request-password-recover'
+import { resetPassword } from './routes/auth/reset-password'
 
 export const server = fastify()
 
@@ -67,6 +70,13 @@ server.setErrorHandler((error, request, reply) => {
 		})
 	}
 
+	if (error instanceof UnauthorizedError) {
+		return reply.status(401).send({
+			error: 'Unauthorized',
+			message: error.message,
+		})
+	}
+
 	console.error(error)
 
 	return reply.status(500).send({ message: 'Internal server error' })
@@ -79,6 +89,8 @@ server.register(fastifyJwt, {
 server.register(createAccount)
 server.register(authenthicateWithEmail)
 server.register(getProfile)
+server.register(requestPasswordRecover)
+server.register(resetPassword)
 
 server
 	.listen({

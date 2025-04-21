@@ -1,7 +1,5 @@
 {
   "name": "@limine/api",
-  "version": "0.2.0",
-  "description": "",
   "main": "src/http/server.ts",
   "scripts": {
     "dev": "pnpm env:load tsx watch src/http/server.ts",

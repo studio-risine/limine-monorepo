@@ -7,7 +7,8 @@ export const authenthicateWithEmail: FastifyPluginAsyncZod = async (app) => {
 		'/sessions/password',
 		{
 			schema: {
-				tags: ['auth'],
+				tags: ['session'],
+				summary: 'Authenthicate with email and password',
 				body: z.object({
 					email: z.string().email(),
 					password: z.string().min(6),

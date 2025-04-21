@@ -7,14 +7,17 @@ export const createAccount: FastifyPluginAsyncZod = async (app) => {
 		'/account',
 		{
 			schema: {
-				tags: ['auth'],
+				tags: ['account'],
+				summary: 'Create a new account',
 				body: z.object({
 					name: z.string().min(2),
 					email: z.string().email(),
 					password: z.string().min(6),
 				}),
 				response: {
-					201: z.string(),
+					201: z.object({
+						user: z.string().uuid(),
+					}),
 				},
 			},
 		},
@@ -30,7 +33,9 @@ export const createAccount: FastifyPluginAsyncZod = async (app) => {
 				password,
 			})
 
-			return reply.status(201).send()
+			return reply.status(201).send({
+				user: user.id,
+			})
 		},
 	)
 }

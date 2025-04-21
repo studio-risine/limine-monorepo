@@ -125,10 +125,28 @@ exports.Prisma.UserScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TokenScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  createdAt: 'createdAt',
+  userId: 'userId'
+};
+
+exports.Prisma.AccountScalarFieldEnum = {
+  id: 'id',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
+  userId: 'userId'
+};
+
 exports.Prisma.ProcessScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  descripition: 'descripition',
+  thumbnailUrl: 'thumbnailUrl',
+  slug: 'slug',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   startedOn: 'startedOn',
   userId: 'userId'
 };
@@ -136,7 +154,9 @@ exports.Prisma.ProcessScalarFieldEnum = {
 exports.Prisma.DeadlineScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  processId: 'processId'
+  processId: 'processId',
+  createdAt: 'createdAt',
+  deadline: 'deadline'
 };
 
 exports.Prisma.SortOrder = {
@@ -153,10 +173,18 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.TokenType = exports.$Enums.TokenType = {
+  PASSWORD_RECOVER: 'PASSWORD_RECOVER'
+};
 
+exports.AccountProvider = exports.$Enums.AccountProvider = {
+  GMAIL: 'GMAIL'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Token: 'Token',
+  Account: 'Account',
   Process: 'Process',
   Deadline: 'Deadline'
 };
